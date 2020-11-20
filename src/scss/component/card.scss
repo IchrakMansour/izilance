@@ -11,7 +11,6 @@
 }
 
 .card-body {
-  padding: 30px;
   height: 100%;
   border-radius: 5px;
 
@@ -21,6 +20,12 @@
 }
 
 .card__title {
+  @include directify($directions) {
+    text-align: directed('left');
+  }
+  h5.card__title-center {
+    text-align: center;
+  }
   margin-bottom: 30px;
   text-transform: uppercase;
   position: relative;

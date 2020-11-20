@@ -2,7 +2,9 @@
   border-radius: 5px;
   padding: 10px 25px;
   margin-bottom: 20px;
-  margin-right: 15px;
+  @include directify($directions) {
+    #{directed('margin-right')}: 15px;
+  }
   transition: all 0.4s;
   font-size: 14px;
   position: relative;
@@ -11,6 +13,9 @@
 
   &:last-child {
     margin-right: 0;
+    @include directify($directions) {
+      #{directed('margin-right')}: 0;
+    }
   }
 
   &:before {
@@ -20,11 +25,15 @@
     border-radius: 50%;
     background-color: $color-accent;
     transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
-    transform: translate(-50%, -50%);
+    @include directify($directions) {
+      transform: #{directed('translate')};
+    }
     z-index: -1;
     content: "";
     top: 0;
-    left: 0;
+    @include directify($directions) {
+      #{directed('left')}: 0px;
+    }
   }
 
   p {
@@ -37,7 +46,14 @@
   svg {
     height: 14px;
     width: 14px;
-    margin: 2px 5px 0 0;
+    margin-top: 2px;
+    margin-bottom: 0px;
+    @include directify($directions) {
+      #{directed('margin-right')}: 5px;
+    }
+    @include directify($directions) {
+      #{directed('margin-left')}: 0px;
+    }
     transition: all 0.3s;
     fill: #444444;
   }
@@ -84,7 +100,12 @@
     &.icon--right {
 
       svg {
-        margin: 2px 0 0 5px;
+        @include directify($directions) {
+          #{directed('margin-right')}: 0px;
+          #{directed('margin-left')}: 5px;
+        }
+        margin-top: 2px;
+        margin-bottom: 0;
       }
     }
   }
@@ -362,7 +383,9 @@
   margin-bottom: 10px;
 
   & > * {
-    margin-right: 15px;
+    @include directify($directions) {
+      #{directed('margin-right')}: 15px;
+    }
 
     &:last-child {
       margin-right: 0;
@@ -391,7 +414,9 @@
   margin-bottom: -10px;
 
   .btn {
-    margin-right: 0;
+    @include directify($directions) {
+      #{directed('margin-right')}: 0px;
+    }
     padding: 10px 15px;
     font-weight: 500;
   }
