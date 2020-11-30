@@ -6,7 +6,7 @@ const ProductsList = () => (
   <Container>
     <Row>
       <Col md={12}>
-        <h3 className="page-title">Products List</h3>
+        <h3 className="page-title">Liste des produits</h3>
       </Col>
     </Row>
     <Row>

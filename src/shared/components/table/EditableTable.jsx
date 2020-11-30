@@ -44,6 +44,7 @@ const EditableTable = ({ heads, rows }) => {
         rowsCount={stateRows.length}
         onGridRowsUpdated={handleGridRowsUpdated}
         rowHeight={44}
+        sortable={true}
         minColumnWidth={100}
       />
     </div>

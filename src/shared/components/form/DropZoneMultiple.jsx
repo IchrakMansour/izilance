@@ -29,7 +29,7 @@ const DropZoneMultipleField = ({ name, value, onChange }) => {
             {(!files || files.length === 0)
             && (
               <div className="dropzone__drop-here">
-                <span className="lnr lnr-upload" /> Drop file here to upload
+                <span className="lnr lnr-upload" /> Ajouter les images
               </div>
             )}
             <input {...getInputProps()} />
@@ -43,7 +43,7 @@ const DropZoneMultipleField = ({ name, value, onChange }) => {
             <div className="dropzone__img" key={file.i} style={{ backgroundImage: `url(${file.preview})` }}>
               <p className="dropzone__img-name">{file.name}</p>
               <button className="dropzone__img-delete" type="button" onClick={e => removeFile(i, e)}>
-                Remove
+                Supprimer
               </button>
             </div>
           ))}

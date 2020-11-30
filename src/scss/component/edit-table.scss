@@ -17,7 +17,6 @@
   }
 
   .react-grid-Cell {
-
     &:focus {
       outline: 1px solid $color-blue !important;
     }
@@ -104,7 +103,9 @@
     font-size: 10px;
     top: 2px;
   }
-
+.lnr {
+  color: #646777 !important;
+}
   .react-grid-HeaderCell-sortable {
 
     .pull-right:before {
@@ -125,7 +126,7 @@
     &.react-grid-HeaderCell-sortable--descending, &.react-grid-HeaderCell-sortable--ascending {
 
       .pull-right:before {
-        visibility: hidden;
+          visibility:hidden;
       }
     }
   }
