@@ -68,7 +68,7 @@ class TopbarProfile extends Component {
                             path="/logout"
                             onClick={auth0.logout}/>)
                         }
-                        <TopbarMenuLink title="Log Out" icon="exit" path="/" onClick={this.logout}/>
+                        <TopbarMenuLink title="Déconnexion" icon="exit" path="/" onClick={this.logout}/>
                     </div>
                 </Collapse>
             </div>
