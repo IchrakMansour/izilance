@@ -1,9 +1,9 @@
-/* eslint-disable react/no-unused-state */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {Card, CardBody, Col, Badge, ButtonToolbar, ButtonGroup, Button} from 'reactstrap';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import MagnifyIcon from 'mdi-react/MagnifyIcon';
+import TrendingUpIcon from 'mdi-react/TrendingUpIcon';
 import EditTable from '../../../../shared/components/table/EditableTable';
 
 const MoneyFormatter = ({value}) => (
@@ -18,16 +18,16 @@ MoneyFormatter.propTypes = {
 
 const StatusFormatter = ({value}) => (
     value === 'enCours' && <Badge color="primary">En cours</Badge> ||
-    value === 'Livre'  && <Badge color="success">Livré</Badge> ||
-    value === 'Annule'  && <Badge color="danger">Annulé</Badge> ||
-    value === 'enPreparation'  && <Badge color="warning">En préparation</Badge> 
+    value === 'Termine'  && <Badge color="success">Terminé</Badge> ||
+    value === 'Annule'  && <Badge color="danger">Annulé</Badge> 
 );
 
 StatusFormatter.propTypes = {
     value: PropTypes.string.isRequired
 };
 
-export default class OrdersListTable extends Component {
+
+class ViewPortefeuille extends Component {
     constructor() {
         super();
         this.heads = [
@@ -36,38 +36,22 @@ export default class OrdersListTable extends Component {
                 name: 'Statut',
                 formatter: StatusFormatter,
                 sortable: true,
-                width:150
             }, {
-                key: 'commande',
-                name: 'Commande',
+                key: 'facture',
+                name: 'Facture',
                 sortable: true,
-                width:150
             }, {
-                key: 'nbr_produit',
-                name: 'Nombre produit',
-                sortable: true,
-                width:150
-            }, {
-                key: 'prix',
-                name: 'Prix',
+                key: 'montant',
+                name: 'Montant',
                 sortable: true,
                 formatter: MoneyFormatter,
-                width:150
             }, {
                 key: 'date',
                 name: 'Date',
                 sortable: true,
-                width:150
-            }, {
-                key: 'adresse',
-                name: 'Adresse',
-                sortable: true,
-                formatter: MoneyFormatter,
-                width:700
             }, {
                 key: 'actions',
                 name: '', 
-                width:100
             }
         ];
 
@@ -89,15 +73,13 @@ export default class OrdersListTable extends Component {
 
         for (let i = 1; i < numberOfRows + 1; i += 1) {
             rows.push({
-                statut: ['enCours', 'Livre', 'Annule', 'enPreparation'][Math.floor((Math.random() * 4))],
-                commande: '123456789',
-                nbr_produit: Math.min(400, Math.round(Math.random() * 400)),
-                prix: Math.min(1000, (Math.random() * 1000) + 20).toFixed(2),
+                statut: ['enCours', 'Termine', 'Annule'][Math.floor((Math.random() * 3))],
+                facture: '123456789',
+                montant: Math.min(1000, (Math.random() * 1000) + 20).toFixed(2),
                 date: this.getRandomDate(new Date(2017, 3, 1), new Date(2018, 3, 1)),
-                adresse: 'Excitavit hic ardor milites per municipia plurima, quae isdem conterminant, dispositos et castella',
                 actions: <ButtonToolbar>
                             <ButtonGroup className="btn-group--icons pt-2" dir="ltr">
-                                <Button outline><Link to='/commandes/voir_commande/123456789'><span className="lnr lnr-eye"/></Link></Button>
+                                <Button outline><Link to='/portefeuille/facture/123456789'><span className="lnr lnr-eye"/></Link></Button>
                                 <Button outline ><span className="lnr lnr-printer" /></Button>
                             </ButtonGroup>
                         </ButtonToolbar>
@@ -113,17 +95,10 @@ export default class OrdersListTable extends Component {
                 <Card>
                     <CardBody className="products-list">
                         <div className="card__title">
-                            <form className="form">
-                                <div className="form__form-group products-list__search w-50">
-                                    <input placeholder="Rechercher une commande ..." name="search"/>
-                                    <MagnifyIcon/>
-                                </div>
-                            </form>
-                            <ButtonToolbar className="products-list__btn-toolbar-top search ">
+                            <ButtonToolbar >
+                                <Badge color="light p-2">Terminé</Badge> 
                                 <Badge color="light p-2">En cours</Badge> 
-                                <Badge color="light p-2">Livré</Badge> 
                                 <Badge color="light p-2">Annulé</Badge> 
-                                <Badge color="light p-2">En préparation</Badge> 
                             </ButtonToolbar>
                         </div>
                         <EditTable heads={this.heads} rows={rows}/>
@@ -133,3 +108,5 @@ export default class OrdersListTable extends Component {
         );
     }
 }
+
+export default ViewPortefeuille;

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import * as firebase from 'firebase/app';
 import RegisterForm from '../../../shared/components/login_register/LoginRegisterForm';
 
 class Register extends Component {

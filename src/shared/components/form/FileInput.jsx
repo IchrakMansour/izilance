@@ -10,7 +10,7 @@ const FileInputField = ({ onChange, name, value }) => {
 
   return (
     <div className="form__form-group-file">
-      <label htmlFor={name}>Choose the file</label>
+      <label htmlFor={name}>Ajouter Logo</label>
       <span>{value.name}</span>
       <input
         type="file"

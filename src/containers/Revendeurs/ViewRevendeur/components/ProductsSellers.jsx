@@ -1,8 +1,7 @@
 /* eslint-disable react/no-unused-state */
 import React, {Component} from 'react';
-import { ButtonToolbar, Card, CardBody, Col, ButtonGroup, Button} from 'reactstrap';
+import { Card, CardBody, Col} from 'reactstrap';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
 import MagnifyIcon from 'mdi-react/MagnifyIcon';
 import EditTable from '../../../../shared/components/table/EditableTable';
 import Modal from '../../../../shared/components/Modal';
@@ -33,16 +32,7 @@ StatusFormatter.propTypes = {
     value: PropTypes.string.isRequired
 };
 
-const modalDelete = () => 
-  (<Modal
-           // color="danger"
-            title="Stop!"
-            header
-         //   btn="Danger"
-            message="dsgsdfg"
-          />);
-
-export default class ProductsListTable extends Component {
+export default class ProductsSellers extends Component {
     constructor() {
         super();
         this.heads = [
@@ -56,31 +46,18 @@ export default class ProductsListTable extends Component {
                 name: 'Nom produit',
                 sortable: true
             }, {
-                key: 'prix',
-                name: 'Prix',
+                key: 'prixFournisseur',
+                name: 'Prix fournisseur',
                 sortable: true
             }, {
-                key: 'quantite',
-                name: 'Quantité',
+                key: 'prixVente',
+                name: 'Prix vente',
                 sortable: true
-            }, {
-                key: 'categorie',
-                name: 'Catégorie',
-                sortable: true
-            }, {
-                key: 'statut',
-                name: 'Statut',
-                sortable: true,
-                formatter: StatusFormatter,
-                //width: 150
-            }, {
-                key: 'actions',
-                name: 'Actions'
-            }
+            }, 
         ];
 
         this.state = {
-            rows: this.createRows(17),
+            rows: this.createRows(55),
             pageOfItems: []
         };
     }
@@ -106,16 +83,8 @@ export default class ProductsListTable extends Component {
                     Img7
                 ][Math.floor((Math.random() * 7))],
                 nom: ['Glass Vase', 'Pillow'][Math.floor((Math.random() * 2))],
-                prix: Math.min(1000, (Math.random() * 1000) + 20).toFixed(2),
-                quantite: Math.min(400, Math.round(Math.random() * 400)),
-                categorie: 'Home accessories',
-                statut: ['Disponible', 'Indisponible'][Math.floor((Math.random() * 2))],
-                actions: <ButtonToolbar>
-                            <ButtonGroup className="btn-group--icons pt-2" dir="ltr">
-                                <Button outline><Link to='/stock/modifier_produit/1'><span className="lnr lnr-pencil"/></Link></Button>
-                                <Button outline onClick={modalDelete}><span className="lnr lnr-trash" /></Button>
-                            </ButtonGroup>
-                        </ButtonToolbar>
+                prixFournisseur: Math.min(1000, (Math.random() * 1000) + 20).toFixed(2),
+                prixVente: Math.min(1000, (Math.random() * 1000) + 20).toFixed(2),
             });
         }
         return rows;
@@ -147,9 +116,9 @@ export default class ProductsListTable extends Component {
         const {rows} = this.state;
 
         return (
-            <Col md={12} lg={12}>
+            <Col md={12} lg={12} xl={12}>
                 <Card>
-                    <CardBody className="products-list">
+                    <CardBody className="products-list__revendeur">
                         <div className="card__title">
                             <form className="form">
                                 <div className="form__form-group products-list__search w-50">
@@ -157,11 +126,8 @@ export default class ProductsListTable extends Component {
                                     <MagnifyIcon/>
                                 </div>
                             </form>
-                            <ButtonToolbar className="products-list__btn-toolbar-top search">
-                                <Link className="btn btn-primary products-list__btn-add" to="/stock/creer_produit">Ajouter un produit</Link>
-                            </ButtonToolbar>
                         </div>
-                        <EditTable onSorting={this.onSorting} heads={this.heads} rows={rows} sortable/>
+                        <EditTable onSorting={this.onSorting} heads={this.heads} rows={rows} sortable style={{width:'100% !important'}}/>
                     </CardBody>
                 </Card>
             </Col>

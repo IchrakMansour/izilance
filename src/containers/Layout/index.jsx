@@ -146,7 +146,7 @@ class Layout extends Component {
           changeBorderRadius={this.changeBorderRadius}
           toggleBoxShadow={this.toggleBoxShadow}
         /> */}
-        {/* {customizer.topNavigation
+        {customizer.topNavigation
           ? (
             <TopbarWithNavigation
               changeMobileSidebarVisibility={this.changeMobileSidebarVisibility}
@@ -159,7 +159,7 @@ class Layout extends Component {
               user={user}
             />
           )
-        } */}
+        }
         {customizer.topNavigation
           ? (
             <SidebarMobile

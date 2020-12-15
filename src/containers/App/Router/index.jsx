@@ -14,6 +14,7 @@ const Router = () => (
                 <Route exact path="/" component={LogIn}/>
                 <Route path="/register" component={Register}/>
                 <Route path="/reset_password" component={ResetPassword}/>
+                <Route exact path="/logout" component={LogIn}/>
                 <Route path="/" component={WrappedRoutes}/>
             </Switch>
         </main>
