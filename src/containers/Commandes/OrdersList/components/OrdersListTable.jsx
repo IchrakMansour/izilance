@@ -76,7 +76,7 @@ export default class OrdersListTable extends Component {
             pageOfItems: []
         };
     }
-
+    
     onChangePage = (pageOfItems) => {
         // update state with new page of items
         this.setState({pageOfItems});
